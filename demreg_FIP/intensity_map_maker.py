@@ -15,7 +15,7 @@ def make_intensity_maps_for_file(filename, line_databases, ncpu=4, test_mode=Fal
     Generate intensity maps for all lines in `line_databases`, or just one in test mode.
     """
     a = ashmcmc(filename, ncpu=ncpu)
-    print(f"DEBUG: ashmcmc outdir => {a.outdir}")
+    #print(f"DEBUG: ashmcmc outdir => {a.outdir}")
 
     custom_intensity_dir = "intensity_map_test"
 
@@ -40,8 +40,8 @@ def make_intensity_maps_for_file(filename, line_databases, ncpu=4, test_mode=Fal
                     calib=True,
                     calib_year="2014"
                 )
-                print(f"DEBUG: Intensity Stats for {line} -> Min={m.data.min()}, Max={m.data.max()}, Mean={m.data.mean()}")
-                print(f"DEBUG: Nonzero pixel count for {line}: {m.data.nonzero()[0].size}")
+                #print(f"DEBUG: Intensity Stats for {line} -> Min={m.data.min()}, Max={m.data.max()}, Mean={m.data.mean()}")
+                #print(f"DEBUG: Nonzero pixel count for {line}: {m.data.nonzero()[0].size}")
                 # Force-save FITS file
                 # === Convert line (e.g., 'ca_14_193.87') into compact label (e.g., 'ca14193_87') ===
                 element_label = (
@@ -55,11 +55,11 @@ def make_intensity_maps_for_file(filename, line_databases, ncpu=4, test_mode=Fal
                         .replace("s_13_256.69", "s13256_69")
                 )
 
-                # === Extract datetime from filename (e.g., 'eis_20140202_122934.data.h5') ===
+                # Extract datetime from filename (e.g., 'eis_20140202_122934.data.h5')
                 datetime_str = Path(filename).stem.split("eis_")[-1].split(".")[0]
                 datetime_str = f"{datetime_str[:4]}_{datetime_str[4:6]}_{datetime_str[6:8]}__{datetime_str[9:11]}_{datetime_str[11:13]}_{datetime_str[13:15]}"
 
-                # === Final filename ===
+                # Final filename
                 fits_filename = f"{datetime_str}_{element_label}.fits"
                 fits_path = os.path.join(custom_intensity_dir, fits_filename)
                 if m.data is None:
@@ -73,10 +73,10 @@ def make_intensity_maps_for_file(filename, line_databases, ncpu=4, test_mode=Fal
 
                     Map(m.data, m.meta).save(fits_path, overwrite=True)
 
-                print("============================================")
-                print(f"Saved intensity map for line={line} in file={filename}")
-                print(f"Output location: {custom_intensity_dir}")
-                print("============================================")
+                #print("============================================")
+                #print(f"Saved intensity map for line={line} in file={filename}")
+                #print(f"Output location: {custom_intensity_dir}")
+                #print("============================================")
 
             except Exception as e:
                 print(f"Error generating intensity for line={line} in {filename}: {e}")
@@ -113,7 +113,7 @@ def main():
         if not filename:
             continue
 
-        print(f"\n==========\nProcessing file: {filename}\n==========")
+        print(f"Processing file: {filename}")
         try:
             make_intensity_maps_for_file(filename, line_databases, ncpu=args.cores, test_mode=args.test)
         except Exception as e:

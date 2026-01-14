@@ -10,9 +10,7 @@ downloader.fetch(
 )
 
 #============================================================================================
-
 #eyeball an active region, using the top_right, bottom_left system, of solarmonitor.org, and just make a png
-
 
 import glob, os, matplotlib.pyplot as plt, astropy.units as u
 from sunpy.map import Map
