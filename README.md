@@ -1,10 +1,9 @@
-"# Gazelle Project" 
+# intra
 
+Code and analysis materials supporting FIP-bias work, including DEM post-processing and PFSS-based magnetic connectivity diagnostics.
 
-# To get updates from GitHub
+This repository includes small utilities, notebooks, and selected generated outputs. Some large data products and pipeline prerequisites may not be included, so certain scripts/notebooks assume you already have the required inputs available locally.
 
-git pull origin main   
-
-# To push your work to GitHub
-
-git push origin main   
+## Contents
+- `demreg_FIP/` — DEM post-processing scripts.
+- `pfss/` — PFSS + EIS analysis scripts and associated outputs.
