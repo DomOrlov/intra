@@ -1,6 +1,5 @@
-# demreg_FIP utilities
+# demreg_FIP
 
-Utilities and analysis scripts for working with DEM outputs and producing intensity maps, aligned rasters, overlays, and AR sequences.
+Code and analysis utilities for post-processing Differential Emission Measure (DEM) outputs to generate intensity maps, aligned rasters, overlays, and active-region (AR) sequences.
 
-## Scope
-This repository contains post-processing and analysis scripts only. It expects DEM output products as inputs. The DEM inversion pipeline itself is not included.
+This directory contains analysis scripts and helper tools only. It expects DEM output products as inputs (the DEM inversion pipeline itself is not included).
